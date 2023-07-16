@@ -5,6 +5,7 @@ const houseController = require("../app/controllers/houseController");
 
 router.post("/register", houseController.register);
 router.get("/view/:slug", houseController.view);
+router.get("/register", houseController.formRegister);
 
 // router.get("/", usersController.get);
 

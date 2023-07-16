@@ -19,7 +19,7 @@ class houseController {
                 res.status(500).send("New creation failed");
             });
     }
-    // POST localhost:[port]/api/user/viewHome
+    // POST localhost:[port]/api/user/view/:slug
     async view(req, res, next) {
         // const formData = req.body;
         House.find({ user_name: req.params.slug })
@@ -28,9 +28,13 @@ class houseController {
                     return res.status(401).send("You don't have a home");
                 }
                 // res.send(req.params.slug);
-                res.send(house.map((mongoose) => mongoose.toObject()));
+                res.render("home");
+                // res.send(house.map((mongoose) => mongoose.toObject()));
             })
             .catch(next);
+    }
+    formRegister(req, res) {
+        res.render("house/register");
     }
 }
 
