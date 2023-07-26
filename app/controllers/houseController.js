@@ -1,11 +1,24 @@
 const House = require("../models/House");
 const User = require("../models/User");
+const jwt = require("jsonwebtoken");
+const { mutipleMongooseToObject } = require("../../util/mongoose");
 
 class houseController {
     // POST localhost:[port]/api/user/register
     async register(req, res, next) {
+        const accessToken = req.cookies.accessToken;
+        await jwt.verify(accessToken, process.env.JWT_ACCESS_KEY, (err, user) => {
+            if (err) {
+                return res.status(403).json("Token is not valid");
+            }
+            req.user = user;
+        });
         const formData = req.body;
-        User.findOne({ user_name: formData.user_name })
+        formData.user_name = req.user.user_name;
+        formData.image =
+            "https://akisa.vn/uploads/plugin/product_items/13553/thiet-ke-nha-dep-2-tang-tan-co-dien-bt22371-v1.jpg";
+        console.log(formData);
+        await User.findOne({ user_name: req.user.user_name })
             .then((user) => {
                 if (!user) {
                     return res.status(401).send("Invalid userName or password");
@@ -13,7 +26,10 @@ class houseController {
                 const house = new House(formData);
                 house.save();
             })
-            .then(() => res.send("Create house successfully"))
+            .then(() => {
+                // res.send("Create house successfully");
+                res.redirect(`/api/house/view/${formData.user_name}`);
+            })
             .catch((err) => {
                 console.error("Error saving house:", err);
                 res.status(500).send("New creation failed");
@@ -28,7 +44,9 @@ class houseController {
                     return res.status(401).send("You don't have a home");
                 }
                 // res.send(req.params.slug);
-                res.render("home");
+                res.render("home", {
+                    house: mutipleMongooseToObject(house),
+                });
                 // res.send(house.map((mongoose) => mongoose.toObject()));
             })
             .catch(next);

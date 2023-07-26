@@ -1,14 +1,12 @@
-const express = require("express");
-const router = express.Router();
-
+const middlewareController = require("../app/controllers/middlewareController");
 const userController = require("../app/controllers/userController");
 
-router.post("/register", userController.register);
-router.post("/login", userController.login);
+const router = require("express").Router();
 
-router.get("/login", userController.formLogin);
-router.get("/register", userController.formRegister);
+// Get All User
+router.get("/", middlewareController.verifyToken, userController.getAllUser);
 
-// router.get("/", usersController.get);
+// Delete User
+router.delete("/:id", middlewareController.verifyTokenAndAdminAuth, userController.deleteUser);
 
 module.exports = router;
