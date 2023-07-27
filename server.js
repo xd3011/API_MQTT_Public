@@ -4,6 +4,7 @@ const app = express();
 const handlebars = require("express-handlebars");
 const dotenv = require("dotenv");
 const cookieParser = require("cookie-parser");
+const cors = require("cors");
 
 dotenv.config();
 const PORT = process.env.PORT || 3000;
@@ -21,6 +22,7 @@ app.use(
     })
 );
 app.use(express.json());
+app.use(cors());
 
 app.use(express.static(path.join(__dirname, "./public/img")));
 console.log(__dirname);

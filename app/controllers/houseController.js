@@ -44,7 +44,7 @@ class houseController {
                     return res.status(401).send("You don't have a home");
                 }
                 // res.send(req.params.slug);
-                res.render("home", {
+                res.render("house/house", {
                     house: mutipleMongooseToObject(house),
                 });
                 // res.send(house.map((mongoose) => mongoose.toObject()));
