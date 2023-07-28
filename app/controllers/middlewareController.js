@@ -17,15 +17,15 @@ const middlewareController = {
         }
     },
 
-    // verifyTokenAndCheckUser() {
-    //     middlewareController.verifyToken(req, res, () => {
-    //         if (req.user.user == req.params.user) {
-    //             next();
-    //         } else {
-    //             return res.status(403).json("You're not the house");
-    //         }
-    //     });
-    // },
+    verifyTokenAndCheckUser(req, res, next) {
+        middlewareController.verifyToken(req, res, () => {
+            if (req.user.user_name === req.params.user_name) {
+                next();
+            } else {
+                return res.status(403).json("You're not the house");
+            }
+        });
+    },
 
     verifyTokenAndAdminAuth(req, res, next) {
         middlewareController.verifyToken(req, res, () => {

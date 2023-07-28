@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 const { mutipleMongooseToObject } = require("../../util/mongoose");
 
 class houseController {
-    // POST localhost:[port]/api/user/register
+    // POST localhost:[port]/api/house/user/register
     async register(req, res, next) {
         const accessToken = req.cookies.accessToken;
         await jwt.verify(accessToken, process.env.JWT_ACCESS_KEY, (err, user) => {
@@ -28,17 +28,17 @@ class houseController {
             })
             .then(() => {
                 // res.send("Create house successfully");
-                res.redirect(`/api/house/view/${formData.user_name}`);
+                res.redirect(`/api/house/${formData.user_name}`);
             })
             .catch((err) => {
                 console.error("Error saving house:", err);
                 res.status(500).send("New creation failed");
             });
     }
-    // POST localhost:[port]/api/user/view/:slug
+    // POST localhost:[port]/api/house/:slug
     async view(req, res, next) {
         // const formData = req.body;
-        House.find({ user_name: req.params.slug })
+        House.find({ user_name: req.params.user_name })
             .then((house) => {
                 if (!house) {
                     return res.status(401).send("You don't have a home");

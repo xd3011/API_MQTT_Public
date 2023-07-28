@@ -2,6 +2,7 @@ const fieldRouter = require("./field");
 const authRouter = require("./auth");
 const houseRouter = require("./house");
 const userRouter = require("./user");
+const roomRouter = require("./room");
 // const siteRouter = require("./site");
 
 function route(app) {
@@ -14,7 +15,8 @@ function route(app) {
 
     // Create routes for house user
     app.use("/api/house", houseRouter);
-    // app.use("/api", coursesRouter);
+
+    app.use("/api/room", roomRouter);
 
     // Get all user
     app.use("/api/user", userRouter);

@@ -3,14 +3,14 @@
         {{#each house}}
             <div class="col-sm-6 col-lg-4">
                 <div class="card" style="width: 18rem;">
-                    <a href="#">
-                        <img src="{{this.image}}" class="card-img-top" alt="{{this.name}}" />
+                    <a href="/api/room/{{this._id}}">
+                        <img src="{{this.image}}" class="card-img-top" alt="{{this.house_name}}" />
                     </a>
                     <div class="card-body">
-                        <a href="#">
+                        <a href="/api/room/{{this._id}}">
                             <h5 class="card-title">{{this.house_name}}</h5>
                         </a>
-                        <a href="#" class="btn btn-primary">Buy</a>
+                        <a href="/api/room/{{this._id}}" class="btn btn-primary">View</a>
                     </div>
                 </div>
             </div>
