@@ -5,6 +5,7 @@ const handlebars = require("express-handlebars");
 const dotenv = require("dotenv");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
+var methodOverride = require("method-override");
 
 dotenv.config();
 const PORT = process.env.PORT || 3000;
@@ -25,7 +26,9 @@ app.use(express.json());
 app.use(cors());
 
 app.use(express.static(path.join(__dirname, "./public/img")));
-console.log(__dirname);
+
+// override with POST having ?_method=DELETE
+app.use(methodOverride("_method"));
 
 //Template engine
 app.engine(
@@ -40,4 +43,4 @@ app.set("views", path.join(__dirname, "resources", "views"));
 // Route init
 route(app);
 
-app.listen(PORT, () => console.log(`Server running on port http://localhost:${PORT}`));
+app.listen(PORT, () => console.log(`Server running on port http://localhost:${PORT}/api/auth/login`));

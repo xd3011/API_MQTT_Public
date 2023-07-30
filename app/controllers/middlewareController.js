@@ -19,7 +19,7 @@ const middlewareController = {
 
     verifyTokenAndCheckUser(req, res, next) {
         middlewareController.verifyToken(req, res, () => {
-            if (req.user.user_name === req.params.user_name) {
+            if (req.user.id === req.params.id) {
                 next();
             } else {
                 return res.status(403).json("You're not the house");

@@ -1,0 +1,18 @@
+<div class="mt-4">
+    <form method="POST" , action="/api/device/{{device._id}}?_method=PUT">
+        <div class="mb-3">
+            <label for="device_name" class="form-label">Device Name is:</label>
+            <input type="text" class="form-control" value="{{device.device_name}}" name="device_name" />
+        </div>
+        <div class="mb-3">
+            <label for="device_type" class="form-label">Device Type is:</label>
+            <input type="text" class="form-control" value="{{device.device_type}}" name="device_type" />
+        </div>
+        <div class="mb-3">
+            <label for="device_image" class="form-label">Image:</label>
+            <input type="text" class="form-control" value="{{device.device_image}}" name="device_image" />
+        </div>
+        <button type="submit" class="btn btn-primary">Edit</button>
+
+    </form>
+</div>

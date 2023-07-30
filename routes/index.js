@@ -3,6 +3,7 @@ const authRouter = require("./auth");
 const houseRouter = require("./house");
 const userRouter = require("./user");
 const roomRouter = require("./room");
+const deviceRouter = require("./device");
 // const siteRouter = require("./site");
 
 function route(app) {
@@ -17,6 +18,8 @@ function route(app) {
     app.use("/api/house", houseRouter);
 
     app.use("/api/room", roomRouter);
+
+    app.use("/api/device", deviceRouter);
 
     // Get all user
     app.use("/api/user", userRouter);

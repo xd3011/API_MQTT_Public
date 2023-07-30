@@ -1,4 +1,7 @@
 <div class="mt-4">
+    <form class="d-flex mt-2" role="search" method="get" action="/api/house/register">
+        <button class="btn btn-outline-success" type="submit">Register House</button>
+    </form>
     <div class="row">
         {{#each house}}
             <div class="col-sm-6 col-lg-4">
@@ -10,7 +13,25 @@
                         <a href="/api/room/{{this._id}}">
                             <h5 class="card-title">{{this.house_name}}</h5>
                         </a>
-                        <a href="/api/room/{{this._id}}" class="btn btn-primary">View</a>
+                        <div class="button-container" style="display: flex; align-items: center;">
+                            <a href="/api/room/{{this._id}}" class="btn btn-primary">View</a>
+                            <form
+                                class="d-flex mt-3 ml-2"
+                                role="search"
+                                method="get"
+                                action="/api/house/{{this._id}}/edit"
+                            >
+                                <button type="submit" class="btn btn-info">Edit</button>
+                            </form>
+                            <form
+                                class="d-flex mt-3 ml-2"
+                                role="search"
+                                method="post"
+                                action="/api/house/{{this._id}}?_method=DELETE"
+                            >
+                                <button type="submit" class="btn btn-outline-danger">Delete</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>

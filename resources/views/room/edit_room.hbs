@@ -1,0 +1,13 @@
+<div class="mt-4">
+    <form method="POST" , action="/api/room/{{room._id}}?_method=PUT">
+        {{! <div class="mb-3">
+            <label for="user_name" class="form-label">User name is:</label>
+            <input type="text" class="form-control" name="user_name" />
+        </div> }}
+        <div class="mb-3">
+            <label for="room_name" class="form-label">Room Name is:</label>
+            <input type="text" class="form-control" value="{{room.room_name}}" name="room_name" />
+        </div>
+        <button type="submit" class="btn btn-primary">Edit</button>
+    </form>
+</div>

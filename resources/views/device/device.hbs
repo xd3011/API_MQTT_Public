@@ -1,25 +1,25 @@
 <div class="mt-4">
-    <form class="d-flex mt-2" role="search" method="get" action="/api/room/register">
-        <button class="btn btn-outline-success" type="submit">Register Room</button>
+    <form class="d-flex mt-2" role="search" method="get" action="/api/device/register">
+        <button class="btn btn-outline-success" type="submit">Register Device</button>
     </form>
     <div class="row">
-        {{#each room}}
+        {{#each device}}
             <div class="col-sm-6 col-lg-4">
                 <div class="card" style="width: 18rem;">
-                    <a href="/api/device/{{this._id}}">
-                        <img src="{{this.image}}" class="card-img-top" alt="{{this.room_name}}" />
+                    <a href="#">
+                        <img src="{{this.device_image}}" class="card-img-top" alt="{{this.device_name}}" />
                     </a>
                     <div class="card-body">
-                        <a href="/api/device/{{this._id}}">
-                            <h5 class="card-title">{{this.room_name}}</h5>
+                        <a href="#">
+                            <h5 class="card-title">{{this.device_name}}</h5>
                         </a>
                         <div style="display: flex; align-items: center;">
-                            <a href="/api/device/{{this._id}}" class="btn btn-primary">View</a>
+                            <a href="#" class="btn btn-primary">View</a>
                             <form
                                 class="d-flex mt-3 ml-2"
                                 role="search"
                                 method="get"
-                                action="/api/room/{{this._id}}/edit"
+                                action="/api/device/{{this._id}}/edit"
                             >
                                 <button type="submit" class="btn btn-info">Edit</button>
                             </form>
@@ -27,7 +27,7 @@
                                 class="d-flex mt-3 ml-2"
                                 role="search"
                                 method="post"
-                                action="/api/room/{{this._id}}?_method=DELETE"
+                                action="/api/device/{{this._id}}?_method=DELETE"
                             >
                                 <button type="submit" class="btn btn-outline-danger">Delete</button>
                             </form>
