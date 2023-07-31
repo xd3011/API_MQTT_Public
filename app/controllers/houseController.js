@@ -43,10 +43,11 @@ class houseController {
                 if (!house) {
                     return res.status(401).send("You don't have a home");
                 }
+                res.status(200).json(house);
                 // res.send(req.params.slug);
-                res.render("house/house", {
-                    house: mutipleMongooseToObject(house),
-                });
+                // res.render("house/house", {
+                //     house: mutipleMongooseToObject(house),
+                // });
                 // res.send(house.map((mongoose) => mongoose.toObject()));
             })
             .catch(next);

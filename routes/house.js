@@ -11,7 +11,7 @@ router.get("/:id/edit", houseController.formHouseEdit);
 router.post("/register", houseController.register);
 router.get("/register", middlewareController.verifyToken, houseController.formRegister);
 
-router.get("/:id", middlewareController.verifyTokenAndCheckUser, houseController.view);
+router.get("/:id", houseController.view);
 
 // router.get("/", usersController.get);
 
