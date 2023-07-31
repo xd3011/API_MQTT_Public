@@ -87,10 +87,10 @@ const authController = {
                     sameSite: "strict",
                     secure: false,
                 });
-                // const { password, ...others } = user._doc;
+                const { password, ...others } = user._doc;
                 // Delete password return
-                // res.status(200).json({ ...others, accessToken });
-                res.status(200).redirect(`/api/house/${user.id}`);
+                res.status(200).json({ ...others, accessToken });
+                // res.status(200).redirect(`/api/house/${user.id}`);
             }
         } catch (err) {
             res.status(500).json(err);
