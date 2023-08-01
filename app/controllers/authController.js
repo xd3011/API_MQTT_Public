@@ -21,8 +21,8 @@ const authController = {
 
             // Save new User
             const user = await newUser.save();
-            // res.status(200).send("Successfully");
-            res.status(200).redirect(`/api/auth/login`);
+            res.status(200).send("Successfully");
+            // res.status(200).redirect(`/api/auth/login`);
         } catch (err) {
             res.status(500).json(err);
         }
