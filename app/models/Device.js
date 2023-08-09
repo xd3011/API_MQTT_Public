@@ -8,6 +8,7 @@ const Device = new Schema(
         device_name: { type: String, required: true },
         device_type: { type: String, require: true },
         device_image: { type: String, require: true },
+        device_id: { type: String, require: true }, // Mac Address Device
     },
     {
         timestamps: true,

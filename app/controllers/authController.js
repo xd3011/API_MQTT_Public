@@ -21,8 +21,8 @@ const authController = {
 
             // Save new User
             const user = await newUser.save();
-            res.status(200).send("Successfully");
-            // res.status(200).redirect(`/api/auth/login`);
+            // res.status(200).send("Successfully");
+            res.status(200).redirect(`/api/auth/login`);
         } catch (err) {
             res.status(500).json(err);
         }
@@ -89,8 +89,8 @@ const authController = {
                 });
                 const { password, ...others } = user._doc;
                 // Delete password return
-                res.status(200).json({ ...others, accessToken });
-                // res.status(200).redirect(`/api/house/${user.id}`);
+                // res.status(200).json({ ...others, accessToken });
+                res.status(200).redirect(`/api/house/${user.id}`);
             }
         } catch (err) {
             res.status(500).json(err);

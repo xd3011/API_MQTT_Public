@@ -1,0 +1,13 @@
+<div class="mt-4">
+    <form method="POST" , action="/api/sub_device/{{sub_device._id}}?_method=PUT">
+        <div class="mb-3">
+            <label for="sub_device_name" class="form-label">Sub Device Name is:</label>
+            <input type="text" class="form-control" value="{{sub_device.sub_device_name}}" name="sub_device_name" />
+        </div>
+        <div class="mb-3">
+            <label for="sub_device_type" class="form-label">Sub Device Type is:</label>
+            <input type="text" class="form-control" value="{{sub_device.sub_device_type}}" name="sub_device_type" />
+        </div>
+        <button type="submit" class="btn btn-primary">Edit</button>
+    </form>
+</div>

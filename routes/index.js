@@ -4,6 +4,7 @@ const houseRouter = require("./house");
 const userRouter = require("./user");
 const roomRouter = require("./room");
 const deviceRouter = require("./device");
+const subDeviceRouter = require("./subDevice");
 // const siteRouter = require("./site");
 
 function route(app) {
@@ -20,6 +21,8 @@ function route(app) {
     app.use("/api/room", roomRouter);
 
     app.use("/api/device", deviceRouter);
+
+    app.use("/api/sub_device", subDeviceRouter);
 
     // Get all user
     app.use("/api/user", userRouter);
