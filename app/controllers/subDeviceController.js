@@ -72,7 +72,7 @@ class subDeviceController {
                 return res.status(404).send("Sub Device not found");
             }
             console.log(subDevice.sub_device_state);
-            return res.status(200).json(subDevice.sub_device_state);
+            return res.status(200).send(subDevice.sub_device_state);
         } catch (err) {
             console.error("Error get sub_device state:", err);
             return res.status(500).send("State cannot get");
