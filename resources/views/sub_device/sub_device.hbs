@@ -3,29 +3,28 @@
         <button class="btn btn-outline-success" type="submit">Register Sub Device</button>
     </form>
     <div class="row">
-        {{!-- {{#each sub_device, sub_device_state, sub_device_state_reversed}} --}}
-        <div class="col-sm-6 col-lg-4">
-            <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                    <a href="#">
-                        <h1 class="card-title">{{sub_device_name}}</h1>
-                    </a>
-                    <h3>State: {{sub_device_state}}</h3>
-                    <div style="display: flex; align-items: center;">
-                        {{! <a href="#" class="btn btn-primary">View</a> }}
-                        <form
-                            class="d-flex mt-3 ml-2"
-                            role="search"
-                            method="post"
-                            action="/api/sub_device/{{sub_device_id}}/changeState"
-                        >
-                            {{!-- <button type="submit" class="btn btn-info">{{sub_device_state_reversed}}</button> --}}
-                            <button type="submit" class="btn btn-info">{{sub_device_state_reversed}}</button>
-                        </form>
+        {{#each sub_device}}
+            <div class="col-sm-6 col-lg-4">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <a href="#">
+                            <h1 class="card-title">{{this.sub_device_name}}</h1>
+                        </a>
+                        <h3>State: {{this.sub_device_state}}</h3>
+                        <div style="display: flex; align-items: center;">
+                            {{! <a href="#" class="btn btn-primary">View</a> }}
+                            <form
+                                class="d-flex mt-3 ml-2"
+                                role="search"
+                                method="post"
+                                action="/api/sub_device/{{this._id}}/changeState"
+                            >
+                                <button type="submit" class="btn btn-info">Change</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        {{!-- {{/each}} --}}
+        {{/each}}
     </div>
 </div>

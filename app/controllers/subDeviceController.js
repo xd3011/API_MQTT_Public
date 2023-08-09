@@ -7,7 +7,7 @@ class subDeviceController {
         const device_id = req.cookies.device_id;
         const formData = req.body;
         formData.device_id = device_id;
-        formData.sub_device_state = "LOW";
+        formData.sub_device_state = "OFF";
         console.log(formData);
         try {
             const sub_device = new SubDevice(formData);
@@ -26,20 +26,8 @@ class subDeviceController {
                 if (!sub_device) {
                     return res.status(401).send("Your sub_device doesn't have a device");
                 }
-                const sub_device_name = sub_device.map((mongoose) => mongoose.sub_device_name);
-                const sub_device_id = sub_device.map((mongoose) => mongoose._id);
-                const sub_device_state = sub_device.map((mongoose) =>
-                    mongoose.sub_device_state === "HIGH" ? "ON" : "OFF"
-                );
-                const sub_device_state_reversed = sub_device.map((mongoose) =>
-                    mongoose.sub_device_state === "HIGH" ? "OFF" : "ON"
-                );
-
                 res.render("sub_device/sub_device", {
-                    sub_device_name,
-                    sub_device_id,
-                    sub_device_state,
-                    sub_device_state_reversed,
+                    sub_device: mutipleMongooseToObject(sub_device),
                 });
             })
             .then(() => {
@@ -62,10 +50,10 @@ class subDeviceController {
             if (!subDevice) {
                 return res.status(404).send("Sub Device not found");
             }
-            if (subDevice.sub_device_state == "LOW") {
-                subDevice.sub_device_state = "HIGH";
-            } else if (subDevice.sub_device_state == "HIGH") {
-                subDevice.sub_device_state = "LOW";
+            if (subDevice.sub_device_state == "ON") {
+                subDevice.sub_device_state = "OFF";
+            } else if (subDevice.sub_device_state == "OFF") {
+                subDevice.sub_device_state = "ON";
             }
             await subDevice.save();
             return res.redirect(`/api/sub_device/${device_id}`);
